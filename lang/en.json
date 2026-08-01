@@ -9,9 +9,31 @@
 			"Label": "Links",
 			"Hint": "Open BM5E documentation, issue tracker, and support links.",
 			"Title": "Resources & Support",
-			"GitHubMessage": "Project links",
+			"GitHubMessage": "GitHub links",
 			"DiscordMessage": "Community",
 			"SupportMessage": "Toss a Coin to your Bugbear"
+		},
+		"BugbearsMechanics": "Bugbear's Mechanics",
+		"MutableDamageCalculation": {
+			"Name": "Mutable Damage Calculation (Temporary)",
+			"Hint": "Temporarily adds D&D 5e mutable damage-calculation hooks. Requires libWrapper and reloads the world when changed.",
+			"LibWrapperRequired": "BM5E mutable damage calculation requires libWrapper to be enabled."
+		},
+		"DamageApplication": {
+			"Enabled": {
+				"Name": "Enable damage restoration",
+				"Hint": "Record native D&D5e damage applications and add a Restore button to the damage tray."
+			},
+			"Applied": "Applied",
+			"Restore": "Restore",
+			"Restored": "Restored"
+		},
+		"EffectApplicationOutcomes": {
+			"Name": "Deselect effect targets by roll outcome",
+			"Hint": "Automatically deselect missed attack targets and targets that succeed on saving throws from effect application trays."
+		},
+		"Activation": {
+			"IsDamaged": "Is Damaged"
 		},
 		"EnableStatusHUDSorting": {
 			"Switch": {
@@ -52,8 +74,33 @@
 			}
 		},
 		"AutoPopout": {
-			"Name": "Pop use message out",
-			"Hint": "When enabled, the item use chat message will be popped out for Eldritch Blast lvl >= 5, Extra attacks, Guardian of Faith, Magic Missiles (modern rules), Scorching Ray, Spirit Guardians, Spiritual Weapon"
+			"Name": "Enable use message pop-outs",
+			"Hint": "Automatically pop out usage messages for configured defaults, manually enabled activities, and extra attacks.",
+			"Identifiers": {
+				"General": "General",
+				"DefaultsTitle": "Configured item and activity defaults",
+				"Name": "Auto pop-out use messages",
+				"Label": "Configure",
+				"Hint": "Configure items and activities whose use messages should pop out by default.",
+				"Title": "Auto Pop-out Use Messages",
+				"HintText": "Enter an item or activity name, id, identifier, or UUID, or an actor UUID, id, or name. You can also drag a compendium document here. Activity Behavior settings override these defaults.",
+				"Placeholder": "Name, id, identifier, or UUID",
+				"AnyItemType": "Any item type",
+				"AnyActivityType": "Any activity type",
+				"Add": "Add entry",
+				"Restore": "Restore defaults",
+				"Restored": "Use message pop-out defaults restored.",
+				"Import": "Import",
+				"Export": "Export",
+				"Imported": "Use message pop-out defaults imported.",
+				"ImportFailed": "The selected file is not a valid use message pop-out defaults export.",
+				"ExtraAttackTitle": "Extra Attack feature",
+				"ExtraAttackHint": "Match a Feature on the actor. Its melee and ranged weapon attacks will pop out."
+			},
+			"Activity": {
+				"Name": "Use message pop-out",
+				"Hint": "Bugbear's Mechanics 5e addition. Pop out the usage message for reusing it as needed. Helpful for extra attacks, Spirit Guardians quick use, etc."
+			}
 		},
 		"Items": {
 			"EldritchBlast": "Eldritch Blast",
@@ -67,6 +114,124 @@
 		"ChatMessagesTooltips": {
 			"Name": "Show roll results on message buttons",
 			"Hint": "When enabled, the Attack and Damage buttons in chat messages will show roll results."
+		},
+		"EffectsEditor": {
+			"Title": "BM5E Effect Editor",
+			"ChangeType": "Bugbear's Mechanics 5e",
+			"LegacyChangeType": "BM5E",
+			"ChangeIndex": "Change {index}",
+			"AttributeKey": "Attribute Key",
+			"AttributeKeyHint": "For BM5E overtime details, open the <a href=\"#\" data-bm5e-readme>local README</a>.",
+			"Readme": {
+				"MissingDocument": "BM5E README document was not found.",
+				"MissingPack": "BM5E README pack was not found: {pack}"
+			},
+			"Overtime": "Overtime",
+			"ActivityType": "Activity Type",
+			"OvertimeActivityType": "Overtime activity",
+			"CreateActivityType": "Create Activity",
+			"CreateActivity": "Create Activity",
+			"CreateNewActivity": "Create system activity",
+			"CreatePseudoActivity": "Create simple BM5E activity",
+			"ChooseItemActivity": "Choose item activity",
+			"CreatedActivity": "Created Activity",
+			"SelectedActivity": "Selected",
+			"LinkActivityType": "Link Activity",
+			"LinkedActivity": "Linked Activity",
+			"DropActivityHere": "Link existing activity",
+			"ActivitySourceHint": "Create an activity on this effect's Item, or on the actor's BM5E Overtime Item for actor-owned effects.",
+			"OverrideActivityName": "Override Activity Name",
+			"StartOf": "Start of",
+			"EndOf": "End of",
+			"PseudoActivityType": "Pseudo Activity",
+			"PseudoActivity": "Pseudo Activity",
+			"EditPseudoActivity": "Edit Pseudo Activity",
+			"SaveAbilities": "Save Abilities",
+			"SaveDC": "Save DC",
+			"PreserveDC": "Preserve source DC",
+			"PreserveDCHint": "Resolve the linked activity's DC using its source actor before creating the overtime activity.",
+			"CheckAbility": "Check Ability",
+			"AssociatedSkills": "Associated Skills",
+			"AssociatedTools": "Associated Tools",
+			"Tool": "Tool",
+			"CheckDC": "Check DC",
+			"DamageAmount": "Damage Amount",
+			"DamageType": "Damage Type",
+			"DamageOnSave": "Damage On Save",
+			"OutOfCombat": "Out of Combat",
+			"Interval": "Interval",
+			"IntervalUnit": {
+				"seconds": "Seconds",
+				"minutes": "Minutes",
+				"hours": "Hours",
+				"days": "Days"
+			},
+			"Half": "Half",
+			"Full": "Full",
+			"NoActivityParent": "BM5E could not find an item to create the overtime activity on.",
+			"ToggleBehavior": "Toggle Behavior",
+			"OutcomeEffects": "Outcome Effects",
+			"SuccessTarget": "Success Target",
+			"FailureTarget": "Failure Target",
+			"SuccessesNeeded": "Successes Needed",
+			"FailuresNeeded": "Failures Needed",
+			"Consecutive": "Consecutive",
+			"OnEachSuccess": "On Each Success",
+			"OnEachFailure": "On Each Failure",
+			"SuccessFields": "Success Fields",
+			"FailureFields": "Failure Fields",
+			"TriggerFields": "Trigger Fields",
+			"TriggerCounter": "Trigger Counter",
+			"TriggersNeeded": "Triggers Needed",
+			"TriggeredEventsNumber": "Triggered Events Number",
+			"OnFinalTrigger": "On Final Trigger",
+			"OnEachTrigger": "On Each Trigger",
+			"OverallSuccesses": "Overall Successes",
+			"OverallFailures": "Overall Failures",
+			"ConsecutiveSuccesses": "Consecutive Successes",
+			"ConsecutiveFailures": "Consecutive Failures",
+			"ConsecutiveSuccessTarget": "Consecutive Successes Needed",
+			"ConsecutiveFailureTarget": "Consecutive Failures Needed",
+			"NumberPlaceholder": "Number",
+			"RemoveOvertime": "Remove Overtime",
+			"GeneratedValue": "Generated Value",
+			"GeneratedJson": "Generated JSON",
+			"GeneratedValueHint": "Preview of the overtime value generated from the editor fields.",
+			"Apply": "Apply",
+			"ApplyClose": "Apply & Close",
+			"Reset": "Reset",
+			"Trigger": {
+				"encounterEnd": "End of Encounter",
+				"roundStart": "Start of Round",
+				"roundEnd": "End of Round",
+				"sourceTurnStart": "Start of Source's Turn",
+				"sourceTurnEnd": "End of Source's Turn",
+				"eachTurnStart": "Start of Each Turn",
+				"eachTurnEnd": "End of Each Turn"
+			},
+			"TriggerOption": {
+				"turn": "Turn",
+				"sourceTurn": "Source's Turn",
+				"eachTurn": "Each Turn",
+				"round": "Round",
+				"encounter": "Encounter"
+			}
+		},
+		"Enchantment": {
+			"Enabled": {
+				"Name": "Enable enchantment handling",
+				"Hint": "Enable Bugbear's Mechanics 5e enchantment chat-card handling and stackable enchantments."
+			},
+			"Stackable": {
+				"Name": "Allow enchantment stacks",
+				"Hint": "Bugbear's Mechanics 5e addition. Allow this enchantment to be applied to the same item more than once."
+			},
+			"MaximumItems": {
+				"Name": "Maximum enchanted items",
+				"Hint": "Bugbear's Mechanics 5e addition. The number of different items this enchantment can affect at once. Defaults to 1. Use 0 for unlimited.",
+				"Reached": "This enchantment has reached its maximum number of enchanted items."
+			},
+			"Unauthorized": "Only the target owner or the enchantment user can apply this enchantment."
+			}
 		}
 	}
-}
