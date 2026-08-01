@@ -4,6 +4,21 @@ Bugbear's Mechanics is a Foundry VTT module which introduces some highly opinion
 
 [Showcase video](https://github.com/user-attachments/assets/7d135cea-8e2b-4143-96b3-af81690d9e64)
 
+<img width="296" height="391" alt="image" src="https://github.com/user-attachments/assets/42c556b9-43e6-40c2-a691-5f2d610c9645" />
+
+<img width="469" height="353" alt="image" src="https://github.com/user-attachments/assets/ee72d1cb-9321-4667-9f5f-5ba26d7f6f22" />
+
+<img width="289" height="289" alt="image" src="https://github.com/user-attachments/assets/a22bf618-3052-40d7-80fc-3ba02a446410" />
+
+<img width="521" height="298" alt="image" src="https://github.com/user-attachments/assets/73e2a777-fddd-4e12-9706-3883be35d4e8" />
+
+<img width="290" height="371" alt="image" src="https://github.com/user-attachments/assets/29f5529e-d22e-489b-ab86-ed289433f244" />
+
+<img width="295" height="611" alt="image" src="https://github.com/user-attachments/assets/74be6609-a813-4aba-974a-9ba1950df4a4" />
+
+<img width="287" height="489" alt="image" src="https://github.com/user-attachments/assets/d5e1797e-96f7-47a1-81f8-e2690facc8bc" />
+
+
 ## Table of Contents
 
 - [Module Settings](#module-settings): chat icon double-clicks, damage automation, mutable damage hooks, chat popouts, and status HUD sorting.
