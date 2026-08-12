@@ -18,7 +18,6 @@ Bugbear's Mechanics is a Foundry VTT module which introduces some highly opinion
 
 <img width="287" height="489" alt="image" src="https://github.com/user-attachments/assets/d5e1797e-96f7-47a1-81f8-e2690facc8bc" />
 
-
 ## Table of Contents
 
 - [Module Settings](#module-settings): chat icon double-clicks, damage automation, mutable damage hooks, chat popouts, and status HUD sorting.
@@ -209,6 +208,8 @@ Aliases include `start`, `end`, `sourceStart`, `sourceEnd`, `eachStart`, `eachEn
 - `heal=1d8` sets healing.
 - `healType=healing` or `healType=temphp` sets healing type.
 - `onSave=half`, `onSave=full`, or `onSave=none` controls save damage.
+- magical=true marks the generated overtime activity as magical. For linked activities, this is an override relative to the linked item's magical property.
+- Automated Conditions 5e v14.533.15 or newer uses this flag when evaluating whether the activity is magical.
 
 ### Outcome Fields
 

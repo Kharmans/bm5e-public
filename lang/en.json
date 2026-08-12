@@ -56,6 +56,10 @@
 				"Name": "HUD scale",
 				"Hint": "Scale the Status HUD as a percentage of its default size."
 			},
+			"ScaleEnabled": {
+				"Name": "Enable HUD scaling",
+				"Hint": "Scale the Status HUD and compensate for canvas zoom."
+			},
 			"Filter": {
 				"Name": "Enable status filter",
 				"Hint": "Show or hide the status filter input on the Token HUD."
@@ -150,6 +154,8 @@
 			"SaveDC": "Save DC",
 			"PreserveDC": "Preserve source DC",
 			"PreserveDCHint": "Resolve the linked activity's DC using its source actor before creating the overtime activity.",
+			"Magical": "Magical",
+			"MagicalHint": "Treat this overtime activity as magical for compatible modules.",
 			"CheckAbility": "Check Ability",
 			"AssociatedSkills": "Associated Skills",
 			"AssociatedTools": "Associated Tools",

@@ -1,3 +1,11 @@
+## v14.533.3
+* Overtime activities can be marked magical; linked activities inherit their source Item's magical property and can toggle it per overtime activity.
+    * To be properly identified by Automated Conditions 5e, make sure you are on v14.533.15 or later of that module.
+
+## v14.533.2
+* Assign Status Effects Sorter scaling is now optional
+* Added missing packs
+
 ## v14.533.1
 * Added configurable use-message pop-out defaults:
     * Configure item, activity, actor, and Extra Attack identifiers from the module settings.
@@ -17,6 +25,7 @@
 * Added optional damage-application restoration with APPLY/APPLIED and RESTORE/RESTORED controls.
 * Added an optional temporary libWrapper override for mutable D&D 5e damage-calculation hooks.
 * Fixed Status HUD layout when filtering is disabled.
+* Added Status HUD scaling with canvas zoom compensation.
 * Added a one-time repair for BM5E compendium folder assignments cached by Foundry.
 * Updated the in-app README introduction and module-settings documentation.
 
