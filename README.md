@@ -50,9 +50,9 @@ For non-attack damage activities, BM5E can roll damage after the activity use. P
 
 ### Mutable Damage Calculation (Temporary)
 
-Enable **Mutable Damage Calculation (Temporary)** only while libWrapper is active. The setting reloads the world and temporarily backports mutable `dnd5e.preCalculateDamage` and `dnd5e.calculateDamage` hook context for D&D5e versions before 6.0.0.
+Enable **Mutable Damage Calculation (Temporary)** only while libWrapper is active. The setting reloads the world and provides mutable `dnd5e.preCalculateDamage` and `dnd5e.calculateDamage` hook context. This temporary compatibility implementation will be re-evaluated when D&D5e v6.0.0 releases.
 
-The post-calculation context includes `damageAfterTempHP`, `wouldDropToZero`, `remainingDamage`, `killedOutright`, and `dropToOneHP()`.
+The post-calculation context includes `damageAfterTempHP`, `wouldDropToZero`, `remainingDamage`, `killedOutright`, and `dropToOneHP()`. `killedOutright` is true when damage reducing an actor to 0 Hit Points leaves remaining damage equal to or greater than their Hit Point maximum: D&D5e's massive-damage instant-death threshold.
 
 ```js
 Hooks.on('dnd5e.calculateDamage', (_actor, _damages, _options, context) => {
@@ -94,6 +94,37 @@ Hooks.on('dnd5e.calculateDamage', (actor, damages, options, context) => {
 		if (!rolls) return;
 
 		retryOptions[RETRY] = rolls[0].total >= dc ? 'success' : 'failure';
+		await actor.applyDamage(originalDamages, retryOptions);
+	})();
+
+	return false;
+});
+```
+### Undead Fortitude Example
+
+```js
+const RETRY = 'my-module.undeadFortitude';
+
+Hooks.on('dnd5e.calculateDamage', (actor, damages, options, context) => {
+	if (!actor.items.getName('Undead Fortitude')) return;
+	if (!context?.wouldDropToZero || !options?.isDelta) return;
+	if (options[RETRY]) {
+		if (options[RETRY] === 'success') context.dropToOneHP();
+		return;
+	}
+
+	const message = options.originatingMessage ?? options.origin;
+	const isCritical = message?.rolls?.some((roll) => roll.isCritical);
+	const hasRadiantDamage = context.originalDamages.some((damage) => damage.type === 'radiant' && damage.value > 0);
+	if (isCritical || hasRadiantDamage) return;
+
+	const originalDamages = foundry.utils.deepClone(context.originalDamages);
+	const retryOptions = { ...options };
+	const dc = 5 + context.damageAfterTempHP;
+
+	void (async () => {
+		const rolls = await actor.rollSavingThrow({ ability: 'con', target: dc });
+		retryOptions[RETRY] = rolls?.[0]?.isSuccess ? 'success' : 'failure';
 		await actor.applyDamage(originalDamages, retryOptions);
 	})();
 
@@ -164,6 +195,7 @@ The value determines what activity BM5E should roll:
 - `action=link` with `link=ACTIVITY_UUID` reuses an existing activity.
 - Created editor activities are stored on the actor's hidden overtime item.
 - An item-owned activity with the **BM5E Overtime** activation cost is a standalone overtime activity. Its editor stores configuration directly on that activity.
+- Activities with the **Is Damaged** activation cost create an activation card when their actor takes damage during combat; out-of-combat damage does not trigger them.
 
 Supported pseudo activity types:
 

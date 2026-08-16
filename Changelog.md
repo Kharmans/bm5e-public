@@ -1,3 +1,8 @@
+## v14.533.4
+* Activities that trigger when their actor takes damage now create their card correctly during combat.
+* The activity BM5E Editor now properly shows only when the activity cost is set to Overtime.
+* Updated compatibility for Foundry VTT v14.366.
+
 ## v14.533.3
 * Overtime activities can be marked magical; linked activities inherit their source Item's magical property and can toggle it per overtime activity.
     * To be properly identified by Automated Conditions 5e, make sure you are on v14.533.15 or later of that module.
